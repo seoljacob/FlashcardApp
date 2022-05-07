@@ -28,7 +28,7 @@ class CardModel {
 
     const isCorrect = this.answer === input
     this.isCorrect = isCorrect // update the questions correct state
-    return isCorrect ? true : false
+    return this.isCorrect
   }
 }
 

@@ -14,7 +14,7 @@ describe('CardModel', () => {
     })
   })
 
-  // another way, usingn test
+  // another way, using test statements
   test('isAttempted()', () => {
     const isAttempted = mockInput.isAttempted()
     expect(isAttempted).toBe(false)
