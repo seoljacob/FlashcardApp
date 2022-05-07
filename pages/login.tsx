@@ -1,10 +1,12 @@
 import React, { useReducer } from "react";
 import type { NextPage } from "next";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "next/router";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/index";
 import formReducer from "../reducer/formReducer";
 
-const SignUp: NextPage = () => {
+const Login: NextPage = () => {
+    const router = useRouter();
     const initialFormState = {
         email: "",
         password: ""
@@ -20,11 +22,13 @@ const SignUp: NextPage = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            createUserWithEmailAndPassword(auth, formState.email, formState.password).then((userCredential) => {
+            signInWithEmailAndPassword(auth, formState.email, formState.password).then((userCredential) => {
                 const user = userCredential.user;
+                router.push("/dashboard");
                 console.log("User", user);
-                console.log("Sign up successful!");
+                console.log("Login successful!");
             })
+            router.push("/");
         } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -36,9 +40,9 @@ const SignUp: NextPage = () => {
         <form onSubmit={handleSubmit}>
             <input type="email" name="email" placeholder="Email" value={formState.email} onChange={(e) => handleInputTextChange(e)} />
             <input type="password" name="password" placeholder="Password" value={formState.password} onChange={(e) => handleInputTextChange(e)} />
-            <input className="hover:cursor-pointer" type="submit" value="Sign up" />
+            <input className="hover:cursor-pointer" type="submit" value="Login" />
         </form>
     )
 }
 
-export default SignUp;
+export default Login;
