@@ -10,7 +10,7 @@ const SignUp: NextPage = () => {
         password: ""
     }
     const [formState, dispatch] = useReducer(formReducer, initialFormState);
-    const handleInputTextChange = (e) => {
+    const handleInputTextChange = (e: any) => {
         dispatch({
             type: "Handle input text",
             field: e.target.name,
@@ -25,8 +25,10 @@ const SignUp: NextPage = () => {
                 console.log("User", user);
                 console.log("Sign up successful!");
             })
-        } catch (err) {
-            console.log(err);
+        } catch (error) {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log("Error code: " + errorCode + " " + errorMessage);
         }
     }
 
