@@ -6,6 +6,7 @@ import { authContext } from "../contexts/authContext";
 const Home: NextPage = () => {
   const userInfo = useContext(authContext);
   const router = useRouter();
+  
   useEffect(() => {
     if (userInfo) {
       router.push({
