@@ -22,8 +22,6 @@ export const Layout: React.FC<Props> = ({ children }) => {
       }
     )}
 
-    console.log("Layout", userInfo);
-
     return (
         <>
             <div>
@@ -32,7 +30,7 @@ export const Layout: React.FC<Props> = ({ children }) => {
                     ? null
                     : userInfo
                     ? <SignOutButton onClickHandle={handleSignOut}/>
-                    :   <div className="flex flex-between gap-4">
+                    :   <div className="flex gap-4">
                             <SignUpButton />
                             <SignInButton />
                         </div>
