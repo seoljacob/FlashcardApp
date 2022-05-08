@@ -4,7 +4,11 @@ import { authContext } from "../contexts/authContext";
 
 const Dashboard: NextPage = () => {
     const userInfo = useContext(authContext);
-    console.log("User", userInfo);
+    useEffect(() => {
+        if (userInfo) {
+            console.log("User", userInfo);
+        }
+    }, [userInfo])
 
     return (
         <div>
