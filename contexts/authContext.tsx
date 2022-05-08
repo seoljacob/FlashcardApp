@@ -12,13 +12,7 @@ type Props = {
 const AuthProvider = ({ children }: Props) => {
     const [userInfo, setUserInfo] = useState(null);
         onAuthStateChanged(auth, (user) => {
-            if (user) {
                 setUserInfo(user);
-                console.log("User is logged in");
-            } else {
-                setUserInfo(null);
-                console.log("User is not logged in");
-            }
         })
     return <Provider value={userInfo}>{children}</Provider>;
 }
